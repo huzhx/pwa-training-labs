@@ -24,18 +24,14 @@ function logError(error) {
   console.log('Looks like there was a problem:', error);
 }
 
-
 // Fetch JSON ----------
 
 function fetchJSON() {
   // TODO
-  fetch('examples/animals.json')
-  .then(logResult)
-  .catch(logError)
+  fetch('examples/animals.json').then(logResult).catch(logError);
 }
 const jsonButton = document.getElementById('json-btn');
 jsonButton.addEventListener('click', fetchJSON);
-
 
 // Fetch Image ----------
 
@@ -45,7 +41,6 @@ function fetchImage() {
 const imgButton = document.getElementById('img-btn');
 imgButton.addEventListener('click', fetchImage);
 
-
 // Fetch text ----------
 
 function fetchText() {
@@ -54,7 +49,6 @@ function fetchText() {
 const textButton = document.getElementById('text-btn');
 textButton.addEventListener('click', fetchText);
 
-
 // HEAD request ----------
 
 function headRequest() {
@@ -62,7 +56,6 @@ function headRequest() {
 }
 const headButton = document.getElementById('head-btn');
 headButton.addEventListener('click', headRequest);
-
 
 // POST request ----------
 
