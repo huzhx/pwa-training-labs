@@ -24,11 +24,18 @@ function logError(error) {
   console.log('Looks like there was a problem:', error);
 }
 
+function validateResponse(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
+
 // Fetch JSON ----------
 
 function fetchJSON() {
   // TODO
-  fetch('examples/animals.json').then(logResult).catch(logError);
+  fetch('examples/animals.json').then(validateResponse).then(logResult).catch(logError);
 }
 const jsonButton = document.getElementById('json-btn');
 jsonButton.addEventListener('click', fetchJSON);
