@@ -31,11 +31,15 @@ function validateResponse(response) {
   return response;
 }
 
+function readResponseAsJSON(response) {
+  return response.json();
+}
+
 // Fetch JSON ----------
 
 function fetchJSON() {
   // TODO
-  fetch('examples/animals.json').then(validateResponse).then(logResult).catch(logError);
+  fetch('examples/animals.json').then(validateResponse).then(readResponseAsJSON).then(logResult).catch(logError);
 }
 const jsonButton = document.getElementById('json-btn');
 jsonButton.addEventListener('click', fetchJSON);
