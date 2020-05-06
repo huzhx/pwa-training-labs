@@ -107,12 +107,16 @@ headButton.addEventListener('click', headRequest);
 /* NOTE: Never send unencrypted user credentials in production! */
 function postRequest() {
   // TODO
+  const messageHeaders = new Headers();
+  messageHeaders.append('Content-Type', 'application/json');
+  messageHeaders.append('X-CUSTOM', 'hello-word');
   const formData = new FormData(document.getElementById('msg-form'));
   const name = formData.get('name');
   const message = formData.get('message');
   fetch('http://localhost:5000/', {
     method: 'POST',
-    body: formData,
+    headers: messageHeaders,
+    body: JSON.stringify({ lab: 'fetch', status: 'fun' }),
   })
     .then(validateResponse)
     .then(readResponseAsText)
