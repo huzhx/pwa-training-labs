@@ -107,6 +107,17 @@ headButton.addEventListener('click', headRequest);
 /* NOTE: Never send unencrypted user credentials in production! */
 function postRequest() {
   // TODO
+  const formData = new FormData(document.getElementById('msg-form'));
+  const name = formData.get('name');
+  const message = formData.get('message');
+  fetch('http://localhost:5000/', {
+    method: 'POST',
+    body: `name=${name}&message=${message}`,
+  })
+    .then(validateResponse)
+    .then(readResponseAsText)
+    .then(showText)
+    .catch(logError);
 }
 const postButton = document.getElementById('post-btn');
 postButton.addEventListener('click', postRequest);
