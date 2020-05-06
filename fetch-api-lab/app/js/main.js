@@ -56,6 +56,10 @@ function readResponseAsText(response) {
   return response.text();
 }
 
+function getContentLength(response) {
+  return response.headers.get('Content-Length');
+}
+
 // Fetch JSON ----------
 
 function fetchJSON() {
@@ -87,6 +91,13 @@ textButton.addEventListener('click', fetchText);
 
 function headRequest() {
   // TODO
+  fetch('examples/words.txt', {
+    method: 'HEAD',
+  })
+    .then(validateResponse)
+    .then(getContentLength)
+    .then(logResult)
+    .catch(logError);
 }
 const headButton = document.getElementById('head-btn');
 headButton.addEventListener('click', headRequest);
