@@ -112,7 +112,7 @@ function postRequest() {
   const message = formData.get('message');
   fetch('http://localhost:5000/', {
     method: 'POST',
-    body: `name=${name}&message=${message}`,
+    body: formData,
   })
     .then(validateResponse)
     .then(readResponseAsText)
