@@ -71,5 +71,19 @@ limitations under the License.
     </footer>
 
     <!-- TODO Register the service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('service-worker.js')
+            .then((reg) => {
+              console.log('Service worker registered! 😎', reg);
+            })
+            .catch((err) => {
+              console.log('Service worker registration failed! 😥', err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
